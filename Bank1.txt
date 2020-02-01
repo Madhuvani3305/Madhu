@@ -1,0 +1,68 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Bank
+{
+    class Program
+    {
+        public int accno;
+        public string name;
+        public string Acctype;
+        public char trtype;
+        public double amt;
+        public double bal;
+
+        public Program( int accno, string name, string Acctype, char trtype, double amt, double bal)
+
+        {
+            this.accno = accno;
+            this.name = name;
+            this.Acctype = Acctype;
+            this.trtype = trtype;
+            this.amt = amt;
+            this.bal = bal;
+        }
+        public void  Credit( double  amt)
+        {
+            bal = bal + amt;
+            Console.WriteLine("Final balance is "+bal);
+        }
+        public void Debit(double amt)
+        {
+            bal = bal - amt;
+            Console.WriteLine(" Final balance is"+bal);
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Enter the account number");
+              int accno=int.Parse(Console.ReadLine());
+            Console.WriteLine("Enter the account holder name ");
+           string name = Console.ReadLine();
+            Console.WriteLine("Enter the account type");
+           string  Acctype = Console.ReadLine();
+            Console.WriteLine("Enter the transaction type");
+            char trtype = Convert.ToChar(Console.ReadLine());
+            Console.WriteLine("Enter the amount ");
+            int amt = int.Parse(Console.ReadLine());
+            // Console.WriteLine("Enter the balance");
+            //int bal = int.Parse(Console.ReadLine());
+            double bal = 500000.00;
+            Program pg = new Program(accno, name, Acctype, trtype, amt, bal);
+            
+            if (trtype == 'd')
+            {
+                pg.Credit(amt);
+            }
+            else if (trtype == 'w')
+
+                pg.Debit(amt);
+            else
+                Console.WriteLine("enter the valid input");
+           
+    }
+    }
+}
+
